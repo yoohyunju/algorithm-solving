@@ -7,5 +7,5 @@ function solution(n)
         n = Math.floor(n / 10);
     }
 
-    return sum
+    return sum;
 }
