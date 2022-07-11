@@ -12,27 +12,24 @@
  */
 var increasingBST = function(root) {
     let data = [];
+    
+    // 중위 순회 함수
     function traverse(node){
         if(node.left) traverse(node.left);
         data.push(node.val);
         if(node.right) traverse(node.right);
     }
     traverse(root);
-
     
-    // sort된 arr를 TreeNode로 만든다
-    // 만들어진 Node들의 right는 다음 순서 Node
+    //console.log(data); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
     
-    const newTree = new TreeNode();
-    let traverseNode = newTree;
+    const newTree = new TreeNode(data[0]);
+    let newNode = newTree;
     
-    for(const el of data) {
-        traverseNode.right = new TreeNode(el, null, null);
-        traverseNode = traverseNode.right;
+    for(let i = 1; i < data.length; i++){
+        newNode.right = new TreeNode(data[i]);
+        newNode = newNode.right;
     }
     
-    return newTree.right;
+    return newTree;
 };
-
-// BFS -> DFS 중위 순회해서 일렬로 된 트리 반환
-// root = [5,3,6,2,4,null,8,1,null,null,null,7,9]
