@@ -1,9 +1,7 @@
 function solution(price, money, count) {
-    let answer = 0;
-    
-    for(let i = 1; i <= count; i++){
-        answer += price * i;
-    }
+  for (let i = 0; i <= count; i++) {
+    money -= price * i;
+  }
 
-    return money - answer > 0 ? 0 : - (money - answer);
+  return money > 0 ? 0 : Math.abs(money);
 }
