@@ -1,15 +1,6 @@
-function fac(n) {
-    let result = BigInt(n);
-    
-    for(let i = 1; i < n; i++) {
-       result *= BigInt(n - i);
-    }
-    
-    return result;
-}
+const fac = (num) => num === 0 ? 1 : num * fac(num - 1)
 
 function solution(balls, share) {
-    if(balls === 1 || balls === share) return 1;
-    return fac(balls) / (fac(balls - share) * fac(share));
+  return Math.round(fac(balls) / fac(balls - share) / fac(share))
 }
 
