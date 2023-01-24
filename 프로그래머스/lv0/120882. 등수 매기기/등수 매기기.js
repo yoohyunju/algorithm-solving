@@ -1,23 +1,6 @@
 function solution(score) {
-    let answer = [];
-    let avg = [];
-    let rank = {};
-
-    for(i of score) {
-        avg.push((i[0] + i[1]) / 2);
-    }
+    let avg = score.map(v => (v[0] + v[1]) / 2);
+    let sorted = [...avg].sort((a, b) => b - a);
     
-    const sortedAvg = [...avg].sort((a, b) => b - a);
-    
-    for(let i = 0; i < sortedAvg.length; i++) {
-        if(!rank[sortedAvg[i]]) {
-            rank[sortedAvg[i]] = i + 1;
-        }
-    }
-    
-    for(let i = 0; i < avg.length; i++) {
-        answer.push(rank[avg[i]]);
-    }
-    
-    return answer;
+    return avg.map(v => sorted.indexOf(v) + 1);
 }
