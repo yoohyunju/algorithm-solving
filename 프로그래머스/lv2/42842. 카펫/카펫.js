@@ -1,25 +1,15 @@
 function solution(brown, yellow) {
-    const blocks = brown + yellow;
-    let divisors = [];
+    let blocks = brown + yellow;
+    let width = 0;
     
-    for(let i = 1; i <= blocks; i++) {
-        if(blocks % i === 0) divisors.push(i);
-    }
-
-    let median = Math.floor(divisors.length / 2);
-    let i = median;
-    let j = median - 1;
-    
-    while(true) {
-        if(divisors.length % 2 === 0) {
-            if((divisors[i] - 2) * (divisors[j] - 2) === yellow) {
-                return [divisors[i], divisors[j]]
-            } else {
-                i++;
-                j--;
-            }
-        } else {
-            return [divisors[median], divisors[median]];
+    for(let i = 3; i <= blocks / i; i++) {
+        let heigth = i;
+        width = Math.floor(blocks / i);
+        
+        if((width - 2) * (heigth - 2) === yellow) {
+            return [width, heigth];
         }
     }
+    
+    return;
 }
