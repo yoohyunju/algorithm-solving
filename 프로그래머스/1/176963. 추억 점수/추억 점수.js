@@ -1,18 +1,17 @@
 function solution(name, yearning, photo) {
     let answer = [];
-    let obj = {};
+    const map = new Map();
     
-    for(let i = 0; i < name.length; i++) {
-        obj[name[i]] = yearning[i]
-    }
+    name.forEach((el, idx) => {
+        map.set(el, yearning[idx]);
+    });
     
     photo.forEach(arr => {
-        let num = 0
-        arr.forEach(el => {
-            num += obj[el] || 0
-        })
-        answer.push(num)
+        const sum = arr.reduce((acc, cur) => 
+            acc + (map.get(cur) || 0), 0
+        )
+        answer.push(sum)
     })
-    
+
     return answer;
 }
