@@ -1,8 +1,8 @@
 function solution(num_list) {
-    let odd = ''
-    let even = ''
+    const { odd, even } = num_list.reduce((acc, num) => {
+        num % 2 === 0 ? acc.even.push(num) : acc.odd.push(num)
+        return acc
+    }, { odd: [], even: [] })
     
-    num_list.forEach(item => item % 2 !== 0 ? odd += item : even += item)
-    
-    return Number(odd) + Number(even)
+    return Number(odd.join('')) + Number(even.join(''))
 }
